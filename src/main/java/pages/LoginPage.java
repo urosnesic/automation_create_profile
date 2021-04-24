@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,6 +28,12 @@ public class LoginPage {
     @FindBy(id = "user_password")
     private WebElement passwordField;
 
+    @FindBy(xpath = "//button[@class='submit-btn button common-primary']")
+    private WebElement submitButton;
+
+    @FindBy(xpath = "//button[@class='button common-primary']")
+    private WebElement acceptCookies;
+
     public LoginPage(WebDriver driver) {
 
         this.driver = driver;
@@ -49,5 +54,12 @@ public class LoginPage {
     public void sendPassword() {
 
         passwordField.sendKeys(password);
+    }
+
+    public CreateProfileLobbyPage clickSubmit() {
+
+        acceptCookies.click();
+        submitButton.click();
+        return new CreateProfileLobbyPage(driver);
     }
 }

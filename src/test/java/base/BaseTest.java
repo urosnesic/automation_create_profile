@@ -2,9 +2,10 @@ package base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import pages.CreateProfileLobbyPage;
 import pages.HomePage;
 import pages.LoginPage;
 
@@ -17,7 +18,7 @@ public class BaseTest {
     public void setUp() {
 
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(getChromeOptions());
 
         driver.get("https://eon.tv/");
         driver.manage().window().maximize();
@@ -32,10 +33,19 @@ public class BaseTest {
         login.selectProvider();
         login.sendUsername();
         login.sendPassword();
+
+         CreateProfileLobbyPage profileLobby = login.clickSubmit();
+         profileLobby.clickCreateProfile();
     }
 
 //    @AfterClass
 //    public void tearDown() {
 //        driver.quit();
 //    }
+
+    private ChromeOptions getChromeOptions() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-notifications");
+        return options;
+    }
 }
