@@ -5,14 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import static utils.Utils.waitForElement;
+import static elementUtils.ElementUtils.waitForElementToBeClickable;
 
 public class CreateProfileLobbyPage {
 
     private WebDriver driver;
-
-//    @FindBy(xpath = "//div[@class='create-new-holder']")
-//    private WebElement newProfile;
 
     @FindBy(xpath = "//button[@class='create-profile-button button common-primary']")
     private WebElement createProfileButton;
@@ -23,8 +20,9 @@ public class CreateProfileLobbyPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void clickCreateProfile() {
+    public CreateNewProfilePage clickCreateProfile() {
 
-        waitForElement(driver, createProfileButton).click();
+        waitForElementToBeClickable(driver, createProfileButton).click();
+        return new CreateNewProfilePage(driver);
     }
 }

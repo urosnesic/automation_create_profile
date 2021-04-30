@@ -7,7 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-import static utils.Utils.selectDropdownOption;
+import static elementUtils.ElementUtils.selectDropdownOption;
+import static elementUtils.ElementUtils.waitForElementToBeClickable;
 
 public class LoginPage {
 
@@ -42,7 +43,7 @@ public class LoginPage {
 
     public void selectProvider() {
 
-        serviceProviderDropdown.click();
+        waitForElementToBeClickable(driver, serviceProviderDropdown).click();
         selectDropdownOption(dropdownOptions, "SBB");
     }
 
@@ -56,10 +57,18 @@ public class LoginPage {
         passwordField.sendKeys(password);
     }
 
-    public CreateProfileLobbyPage clickSubmit() {
+    public void clickSubmit() {
 
         acceptCookies.click();
         submitButton.click();
+    }
+
+    public CreateProfileLobbyPage loginToProfileLobbyPage() {
+
+        selectProvider();
+        sendUsername();
+        sendPassword();
+        clickSubmit();
         return new CreateProfileLobbyPage(driver);
     }
 }

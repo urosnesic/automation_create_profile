@@ -3,11 +3,10 @@ package base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
-import pages.CreateProfileLobbyPage;
+import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
-import pages.LoginPage;
 
 public class BaseTest {
 
@@ -18,6 +17,11 @@ public class BaseTest {
     public void setUp() {
 
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
+    }
+
+    @BeforeMethod
+    public void beforeTest() {
+
         driver = new ChromeDriver(getChromeOptions());
 
         driver.get("https://eon.tv/");
@@ -26,22 +30,11 @@ public class BaseTest {
         homePage = new HomePage(driver);
     }
 
-    @Test
-    public void test() {
+    @AfterMethod
+    public void tearDown() {
 
-        LoginPage login = homePage.clickLogin();
-        login.selectProvider();
-        login.sendUsername();
-        login.sendPassword();
-
-         CreateProfileLobbyPage profileLobby = login.clickSubmit();
-         profileLobby.clickCreateProfile();
+        driver.quit();
     }
-
-//    @AfterClass
-//    public void tearDown() {
-//        driver.quit();
-//    }
 
     private ChromeOptions getChromeOptions() {
         ChromeOptions options = new ChromeOptions();

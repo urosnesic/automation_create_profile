@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import static utils.Utils.waitForElement;
+import static elementUtils.ElementUtils.waitForElementToBeClickable;
 
 public class HomePage {
 
@@ -22,7 +22,7 @@ public class HomePage {
 
     public LoginPage clickLogin() {
 
-        waitForElement(driver, loginButton).click();
+        waitForElementToBeClickable(driver, loginButton).click();
         return new LoginPage(driver);
     }
 }
