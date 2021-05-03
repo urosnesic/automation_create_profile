@@ -30,6 +30,9 @@ public class CreateProfileTests extends BaseTest {
         startPage.clickMyProfile();
 
         Assert.assertEquals(startPage.getFieldWithProfileName().getAttribute("value"), name);
+
+        startPage.clickDeleteProfileButton();
+        startPage.clickConfirmDelete();
     }
 
     @Test(dataProvider = "name positive",
@@ -51,6 +54,9 @@ public class CreateProfileTests extends BaseTest {
         startPage.clickMyProfile();
 
         Assert.assertEquals(startPage.getFieldWithProfileName().getAttribute("value"), name);
+
+        startPage.clickDeleteProfileButton();
+        startPage.clickConfirmDelete();
     }
 
     @Test(dataProvider = "name positive",
@@ -73,6 +79,9 @@ public class CreateProfileTests extends BaseTest {
         startPage.clickMyProfile();
 
         Assert.assertEquals(startPage.getFieldWithProfileName().getAttribute("value"), name);
+
+        startPage.clickDeleteProfileButton();
+        startPage.clickConfirmDelete();
     }
 
     @Test(dataProvider = "name positive",
@@ -95,6 +104,12 @@ public class CreateProfileTests extends BaseTest {
         startPage.clickSettings();
 
         Assert.assertEquals(startPage.getFieldWithProfileName().getAttribute("value"), name);
+
+        startPage.clickOtherSettings();
+        startPage.sendPinInput();
+        startPage.clickConfirmPin();
+        startPage.clickDeleteChildProfile();
+        startPage.clickConfirmDelete();
     }
 
     @Test(dataProvider = "name positive",
@@ -117,5 +132,11 @@ public class CreateProfileTests extends BaseTest {
         startPage.clickSettings();
 
         Assert.assertEquals(startPage.getFieldWithProfileName().getAttribute("value"), name);
+
+        startPage.clickOtherSettings();
+        startPage.sendPinInput();
+        startPage.clickConfirmPin();
+        startPage.clickDeleteChildProfile();
+        startPage.clickConfirmDelete();
     }
 }

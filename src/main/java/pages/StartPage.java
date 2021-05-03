@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import static elementUtils.ElementUtils.waitForElementToBeClickable;
 import static elementUtils.ElementUtils.waitForInvisibility;
+import static pages.CreateNewProfilePage.PIN;
 
 public class StartPage {
 
@@ -30,8 +31,23 @@ public class StartPage {
     @FindBy(xpath = "//button[@class='button flat']")
     private WebElement oK;
 
+    @FindBy(xpath = "//button[@class='button flat']")
+    private WebElement deleteProfileButton;
+
+    @FindBy(xpath = "//button[@class='button primary']")
+    private WebElement confirmDelete;
+
+    @FindBy(xpath = "//span[contains(text(), 'Ostala podešavanja')]")
+    private WebElement otherSettings;
+
+    @FindBy(xpath = "//input[@maxlength='4']")
+    private WebElement pinInput;
+
+    @FindBy(xpath = "//button[contains(text(), 'Potvrdi')]")
+    private WebElement confirmPin;
+
     @FindBy(xpath = "//button[contains(text(), 'Obriši profil')]")
-    private WebElement deleteProfile;
+    private WebElement deleteChildProfile;
 
     public StartPage(WebDriver driver) {
 
@@ -64,8 +80,33 @@ public class StartPage {
         waitForInvisibility(driver, pageLoader);
     }
 
-    public void clickDeleteProfile() {
+    public void clickOtherSettings() {
 
-        deleteProfile.click();
+        waitForElementToBeClickable(driver, otherSettings).click();
+    }
+
+    public void sendPinInput() {
+
+        pinInput.sendKeys(PIN);
+    }
+
+    public void clickConfirmPin() {
+
+        waitForElementToBeClickable(driver, confirmPin).click();
+    }
+
+    public void clickDeleteProfileButton() {
+
+        waitForElementToBeClickable(driver, deleteProfileButton).click();
+    }
+
+    public void clickConfirmDelete() {
+
+        waitForElementToBeClickable(driver, confirmDelete).click();
+    }
+
+    public void clickDeleteChildProfile() {
+
+        waitForElementToBeClickable(driver, deleteChildProfile).click();
     }
 }

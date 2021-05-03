@@ -13,7 +13,7 @@ import static elementUtils.ElementUtils.*;
 public class CreateNewProfilePage {
 
     private WebDriver driver;
-    private static final String PIN = "0000";
+    public static final String PIN = "0000";
 
     @FindBy(xpath = "//img[@alt='Avatar image']")
     private List<WebElement> avatars;
