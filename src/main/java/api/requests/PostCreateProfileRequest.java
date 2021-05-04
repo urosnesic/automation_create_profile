@@ -8,6 +8,13 @@ import java.net.URI;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+/*
+    TODO
+    This end point, for now, is not functional in code.
+    Problem, probably is in parameters that I send through POST.
+    (Although, I have no problem sending request through Postman)
+ */
+
 public class PostCreateProfileRequest extends PostLoginRequest {
 
     public PostCreateProfileRequest() throws IOException, InterruptedException {}

@@ -31,6 +31,17 @@ public class CreateProfileTests extends BaseTest {
 
         Assert.assertEquals(startPage.getFieldWithProfileName().getAttribute("value"), name);
 
+        /*
+            TODO
+            Two lines after assert are for deleting profile that was created by test.
+            This is not a good solution, there should be no lines of code after assert.
+            Much better solution would be that every test has its own unique login credentials (that is, every test would use new account).
+            Alternatively, we could use api call to DELETE profile end point (if new account per test is not an option),
+            but I was unable to figure out how to make it work without documentation.
+
+            This applies to all tests in this class.
+         */
+
         startPage.clickDeleteProfileButton();
         startPage.clickConfirmDelete();
     }
