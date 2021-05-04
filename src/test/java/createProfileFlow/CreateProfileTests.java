@@ -9,6 +9,16 @@ import pages.CreateProfileLobbyPage;
 import pages.LoginPage;
 import pages.StartPage;
 
+
+/*
+    TODO
+    Possible improvement is going to higher abstraction level than is currently.
+    That is, we could create another class (e.g. Profile) that will take profile name and age selector
+    as variables. Then, we could use data provider to drop number of tests in this class from 5 to 2
+    (one test for teenagers and adults, other for children).
+    If we use one of two methods (that I mentioned below) to bypass the need for deleting profiles through UI,
+    we could have just one test method in this class.
+ */
 public class CreateProfileTests extends BaseTest {
 
     @Test(dataProvider = "name positive",
